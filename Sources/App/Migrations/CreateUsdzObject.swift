@@ -6,6 +6,7 @@ struct CreateUsdzObject: AsyncMigration {
             .id()
             .field("title", .string, .required)
             .field("object_url_string", .string, .required)
+            .field("thumbnail_image_url_string", .string, .required)
             .create()
     }
 

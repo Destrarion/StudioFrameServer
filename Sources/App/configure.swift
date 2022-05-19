@@ -33,6 +33,7 @@ public func configure(_ app: Application) throws {
     
     
     app.migrations.add(CreateUsdzObject())
+    app.migrations.add(UsdzObject.SeedsMigration())
     
     try app.autoMigrate().wait()
     

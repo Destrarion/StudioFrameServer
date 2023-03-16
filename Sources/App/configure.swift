@@ -4,6 +4,11 @@ import Vapor
 
 // configures your application
 public func configure(_ app: Application) throws {
+    
+    if app.environment == .development {
+            app.http.server.configuration.hostname = "0.0.0.0"
+        }
+    
     // uncomment to serve files from /Public folder
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
     
@@ -23,9 +28,9 @@ public func configure(_ app: Application) throws {
         app.databases.use(.postgres(
             hostname: Environment.get("DATABASE_HOST") ?? "localhost",
             port: Environment.get("DATABASE_PORT").flatMap(Int.init(_:)) ?? PostgresConfiguration.ianaPortNumber,
-            username: Environment.get("DATABASE_USERNAME") ?? "vapor-admin",//"postgres",//"vapor_username",
-            password: Environment.get("DATABASE_PASSWORD") ?? "password",//"vapor_password",
-            database: Environment.get("DATABASE_NAME") ?? "vapor-db"
+            username: Environment.get("DATABASE_USERNAME") ?? "postgres",//"postgres",//"vapor_username",
+            password: Environment.get("DATABASE_PASSWORD") ?? "vapor_password",//"vapor_password",
+            database: Environment.get("DATABASE_NAME") ?? "postgres"
         ), as: .psql)
     }
     

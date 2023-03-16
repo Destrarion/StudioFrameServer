@@ -7,6 +7,7 @@ extension UsdzObject {
             try await database.transaction { database in
                 try await UsdzObject(title: "tv_retro", objectUrlString: "tv_retro.usdz", thumbnailImageUrlString: "tv_retroThumbnail.png").save(on: database)
                 try await UsdzObject(title: "PegasusTrail", objectUrlString: "PegasusTrail.usdz", thumbnailImageUrlString: "PegasusTrailThumbnail.png").save(on: database)
+                try await UsdzObject(title: "SofaFurniture", objectUrlString: "SofaFurniture.usdz", thumbnailImageUrlString: "SofaFurnitureThumbnail.png").save(on: database)
             }
         }
         
